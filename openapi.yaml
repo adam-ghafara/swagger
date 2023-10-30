@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function - OpenAPI 3.0
+  title: Adam Ghafara - Dokumen API
   description: >-
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
@@ -10,13 +10,15 @@ info:
     email: awangga@gmail.com
   license:
     name: Peda Package
-    url: https://pkg.go.dev/github.com/petapedia/peda
+    url: https://pkg.go.dev/github.com/adam-ghafara/peta-backend
   version: 1.0.11
 externalDocs:
   description: Repo GCF
   url: https://petapedia.github.io/gcf/
 servers:
-  - url: https://asia-southeast2-awangga.cloudfunctions.net
+  - url: https://asia-southeast2-gis-tester-401506.cloudfunctions.net/
+  - url: https://northamerica-northeast1-gis-tester-401506.cloudfunctions.net/
+  - url: https://us-central1-gis-tester-401506.cloudfunctions.net/
 tags:
   - name: data
     description: Data Geo Spasial
@@ -28,10 +30,15 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://petapedia.github.io/gcf/post/
+  - name: longInput
+    description: Input Longitude
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://petapedia.github.io/gcf/post/
   - name: user
     description: Get Token and Authorize
 paths:
-  /petapedia:
+  /let-load:
     get:
       tags:
         - data
@@ -49,7 +56,7 @@ paths:
                   $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-  /petapedia-post:
+  /signIn:
     post:
       tags:
         - auth
