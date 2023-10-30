@@ -17,28 +17,18 @@ servers:
   - url: https://northamerica-northeast1-gis-tester-401506.cloudfunctions.net/
   - url: https://us-central1-gis-tester-401506.cloudfunctions.net/
 tags:
-  - name: data
+  - name: GET GIS Data
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
-  - name: auth
-    description: Auth to Access to API
+  - name: SignIn
+    description: Login Token Authorize
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
-  - name: latInput
-    description: Input Latitude
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://github.com/adam-ghafara/gcf/
-  - name: longInput
-    description: Input Longitude
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://github.com/adam-ghafara/gcf/
-  - name: Lineput
-    description: Input Highlight Line
+  - name: GIS Location
+    description: Login Token Authorize
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
@@ -46,7 +36,25 @@ paths:
   /let-load:
     get:
       tags:
-        - data
+        - GET GIS Data
+      summary: Get Data Geospasial (Pakai Server us-central1)
+      description: List Data Geospasial
+      operationId: getGeoJSON
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Peta'
+        '400':
+          description: Invalid status value
+  /loc-load:
+    get:
+      tags:
+        - GIS Location
       summary: Get Data Geospasial (Pakai Server us-central1)
       description: List Data Geospasial
       operationId: getGeoJSON
@@ -64,7 +72,7 @@ paths:
   /postSignIn:
     post:
       tags:
-        - auth
+        - SignIn
       summary: Login get Token (Pakai Server northamerica-northeast1)
       description: Login and Get User Token
       operationId: authService
