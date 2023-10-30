@@ -8,7 +8,7 @@ info:
   license:
     name: Peda Package
     url: https://pkg.go.dev/github.com/adam-ghafara/peta-backend
-  version: 1.0.11
+  version: v1.0.0
 externalDocs:
   description: Repo GCF
   url: https://github.com/adam-ghafara/gcf
@@ -27,8 +27,18 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
+  - name: latInput
+    description: Input Latitude
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://github.com/adam-ghafara/gcf/
   - name: longInput
     description: Input Longitude
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://github.com/adam-ghafara/gcf/
+  - name: Lineput
+    description: Input Highlight Line
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
