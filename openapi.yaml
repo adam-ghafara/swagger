@@ -47,7 +47,7 @@ paths:
     get:
       tags:
         - data
-      summary: Get Data Geospasial
+      summary: Get Data Geospasial (Pakai Server us-central1)
       description: List Data Geospasial
       operationId: getGeoJSON
       responses:
@@ -61,11 +61,11 @@ paths:
                   $ref: '#/components/schemas/Peta'
         '400':
           description: Invalid status value
-  /signIn:
+  /postSignIn:
     post:
       tags:
         - auth
-      summary: Login get Token
+      summary: Login get Token (Pakai Server northamerica-northeast1)
       description: Login and Get User Token
       operationId: authService
       requestBody:
@@ -110,7 +110,7 @@ components:
       properties:
         username:
           type: string
-          example: petped
+          example: admin
         password:
           type: string
           example: secret
@@ -122,10 +122,10 @@ components:
           example: false
         message:
           type: string
-          example: fehguy
+          example: signIn Succesfull
         token:
           type: string
-          example: fehguy
+          example: token dropped here
   requestBodies:
     AuthReq:
       description: Request Authentication
