@@ -2,19 +2,16 @@ openapi: 3.0.3
 info:
   title: Adam Ghafara - Dokumen API
   description: >-
-    Jelaskan disini apa saja yang perlu dijelaskan
-    termasuk informasi yang diperlukan untuk dinilai
-    term of service isi dari link repo dari swagger ini
-  termsOfService: https://github.com/jscroot/examples/tree/main/api/swagger
+    API Swagger Web Adam
   contact:
-    email: awangga@gmail.com
+    email: adam.ghafara.job@gmail.com
   license:
     name: Peda Package
     url: https://pkg.go.dev/github.com/adam-ghafara/peta-backend
   version: 1.0.11
 externalDocs:
   description: Repo GCF
-  url: https://petapedia.github.io/gcf/
+  url: https://github.com/adam-ghafara/gcf
 servers:
   - url: https://asia-southeast2-gis-tester-401506.cloudfunctions.net/
   - url: https://northamerica-northeast1-gis-tester-401506.cloudfunctions.net/
@@ -24,19 +21,17 @@ tags:
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/get/
+      url: https://github.com/adam-ghafara/gcf/
   - name: auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/
+      url: https://github.com/adam-ghafara/gcf/
   - name: longInput
     description: Input Longitude
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://petapedia.github.io/gcf/post/
-  - name: user
-    description: Get Token and Authorize
+      url: https://github.com/adam-ghafara/gcf/
 paths:
   /let-load:
     get:
@@ -141,3 +136,4 @@ components:
       type: apiKey
       name: token
       in: header
+      
