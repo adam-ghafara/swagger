@@ -27,17 +27,23 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
+  - name: SignUp
+    description: SignUp Akun
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: 
   - name: GIS Location
     description: Login Token Authorize
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://github.com/adam-ghafara/gcf/
+
 paths:
-  /let-load:
+  /GetLocation:
     get:
       tags:
         - GET GIS Data
-      summary: Get Data Geospasial (Pakai Server us-central1)
+      summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
       responses:
@@ -55,7 +61,7 @@ paths:
     get:
       tags:
         - GIS Location
-      summary: Get Data Geospasial (Pakai Server us-central1)
+      summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
       responses:
@@ -73,21 +79,46 @@ paths:
     post:
       tags:
         - SignIn
-      summary: Login get Token (Pakai Server northamerica-northeast1)
+      summary: Login get Token
       description: Login and Get User Token
       operationId: authService
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Auth'
+              $ref: '#/components/schemas/User'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthResponse'
+                $ref: '#/components/schemas/LoginResponse'
+        '405':
+          description: Invalid input
+      security:
+        - token:
+            - write:apiKey
+            - read:apiKey
+  /postSignUp:
+    post:
+      tags:
+        - SignUp
+      summary: SignUp (Pakai Server asia-southeast2)
+      description: Login and Get User Token
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/postSignUp'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postSignUpResponse'
         '405':
           description: Invalid input
       security:
@@ -113,7 +144,7 @@ components:
           properties:
             name:
               type: string
-    Auth:
+    User:
       type: object
       properties:
         username:
@@ -122,7 +153,7 @@ components:
         password:
           type: string
           example: secret
-    AuthResponse:
+    LoginResponse:
       type: object
       properties:
         status:
@@ -130,17 +161,35 @@ components:
           example: false
         message:
           type: string
-          example: signIn Succesfull
+          example: signIn Success.
         token:
           type: string
           example: token dropped here
+    postSignUp:
+      type: object
+      properties:
+        username:
+          type: string
+          example: admin
+        password:
+          type: string
+          example: 12345
+    postSignUpResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: SignUp Success.
   requestBodies:
     AuthReq:
       description: Request Authentication
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Auth'
+            $ref: '#/components/schemas/postSignIn'
     UserArray:
       description: List of user object
       content:
@@ -148,7 +197,7 @@ components:
           schema:
             type: array
             items:
-              $ref: '#/components/schemas/AuthResponse'
+              $ref: '#/components/schemas/postSignInResponse'
   securitySchemes:
     token:
       type: apiKey
