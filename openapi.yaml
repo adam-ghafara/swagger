@@ -7,17 +7,15 @@ info:
     email: adam.ghafara.job@gmail.com
   license:
     name: Peda Package
-    url: https://pkg.go.dev/github.com/adam-ghafara/peta-backend
+    url: https://github.com/adam-ghafara/pedabackend
   version: v1.0.0
 externalDocs:
   description: Repo GCF
   url: https://github.com/adam-ghafara/gcf
 servers:
   - url: https://asia-southeast2-gis-tester-401506.cloudfunctions.net/
-  - url: https://northamerica-northeast1-gis-tester-401506.cloudfunctions.net/
-  - url: https://us-central1-gis-tester-401506.cloudfunctions.net/
 tags:
-  - name: GET GIS Data
+  - name: GET GIS LOCATION
     description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -32,7 +30,7 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: 
-  - name: GIS Location
+  - name: POST GIS
     description: Login Token Authorize
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -42,7 +40,7 @@ paths:
   /GetLocation:
     get:
       tags:
-        - GET GIS Data
+        - GET GIS LOCATION
       summary: Get Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
@@ -60,8 +58,8 @@ paths:
   /loc-load:
     get:
       tags:
-        - GIS Location
-      summary: Get Data Geospasial
+        - POST GIS
+      summary: POST Data Geospasial
       description: List Data Geospasial
       operationId: getGeoJSON
       responses:
@@ -104,7 +102,7 @@ paths:
     post:
       tags:
         - SignUp
-      summary: SignUp (Pakai Server asia-southeast2)
+      summary: SignUp
       description: Login and Get User Token
       operationId: authService
       requestBody:
@@ -161,7 +159,7 @@ components:
           example: false
         message:
           type: string
-          example: signIn Success.
+          example: Selamat Datang.
         token:
           type: string
           example: token dropped here
@@ -182,7 +180,7 @@ components:
           example: true
         message:
           type: string
-          example: SignUp Success.
+          example: SignUp Success!
   requestBodies:
     AuthReq:
       description: Request Authentication
