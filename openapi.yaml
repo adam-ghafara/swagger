@@ -30,13 +30,36 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: 
-  - name: POST GIS
-    description: Login Token Authorize
+  - name: Create GIS
+    description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://github.com/adam-ghafara/gcf/
+      url: https://pkg.go.dev/github.com/Fancypedia/fancybackenddd
+      
 
 paths:
+  /funcKey:  # Penambahan endpoint Create GIS
+    post:
+      tags:
+        - Create GIS
+      summary: Create GIS Data
+      description: Add new GIS data
+      operationId: createGIS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
+      responses:
+        '201':
+          description: Data successfully created
+        '400':
+          description: Invalid input or request body
+      security:
+        - SECRET:
+            - write:apiKey
+            - read:SECRET
   /GetLocation:
     get:
       tags:
@@ -125,23 +148,6 @@ paths:
             - read:apiKey
 components:
   schemas:
-    Peta:
-      type: object
-      properties:
-        type:
-          type: string
-        geometry:
-          type: object
-          properties:
-            type: 
-              type: string
-            coordinates: 
-              type: array
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
     User:
       type: object
       properties:
@@ -172,33 +178,30 @@ components:
         password:
           type: string
           example: 12345
-    postSignUpResponse:
+    Peta:
       type: object
       properties:
-        status:
-          type: bool
-          example: true
-        message:
+        type:
           type: string
-          example: SignUp Success!
-  requestBodies:
-    AuthReq:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/postSignIn'
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/postSignInResponse'
+          example: "Feature"
+        properties:
+          type: object
+          properties:
+            name:
+              type: string
+              example: "CONTOH TEMPAT"
+        geometry:
+          type: object
+          properties:
+            coordinates:
+              type: array 
+              example: [ [107.59169227820036, -6.972928315950369] ]
+            type:
+              type: string
+              example: "Point"
   securitySchemes:
-    token:
+    SECRET:
       type: apiKey
-      name: token
+      name: SECRET
       in: header
       
